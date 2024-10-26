@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     
@@ -16,16 +17,22 @@
         <div id="question">How many rounds dou you want to play?</div>
         
         <div id="rounds">
-            <input type="text" id="rounds" name="rounds" size="12" class="controlButton">
-            <button class="controlButton">START</button> 
-            <button class="controlButton">RESET</button>
+            <input type="text" id="roundsInput" name="rounds" size="12">
+            <button id="controlButtonStart">START</button> 
+            <button id="controlButtonReset">RESET</button>
         </div>
 
         <div id="game">
             <div id="buttons">
-                <img class="gameButton" src="rock.jpg" alt="Rock" width="100px">
-                <img class="gameButton" src="paper.jpg" alt="Paper">
-                <img class="gameButton" src="scissors.jpg" alt="Sicssors">
+                <button class="buttonContainer">
+                    <img class="gameButton rock" src="rock.jpg" alt="Rock" width="100px">
+                </button>   
+                <button class="buttonContainer">
+                    <img class="gameButton paper" src="paper.jpg" alt="Paper">
+                </button>
+                <button class="buttonContainer">
+                    <img class="gameButton scissors" src="scissors.jpg" alt="Sicssors">
+                </button>
             </div>
             <div id="result">There will be game results.</div>
         </div>
