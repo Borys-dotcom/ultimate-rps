@@ -56,7 +56,7 @@ gameButtons.forEach((gameButton) => {
 });
 
 //====================Game functions===================
-function round(computer, human){
+function round(human, computer){
     // resultField.innerHTML += `Human choice is: ${human}<br>`;
     // resultField.innerHTML += `Computer choice is: ${human}<br>`;
 
@@ -64,14 +64,14 @@ function round(computer, human){
     if (((computer === "rock") && (human === "paper"))||
         ((computer === "paper") && (human === "scissors"))||
         ((computer === "scissors") && (human === "rock"))){
-            return "human";
+            return ["human", computer, human];
         }
     else if (((computer === "rock") && (human === "scissors"))||
             ((computer === "paper") && (human === "rock"))||
             ((computer === "scissors") && (human === "paper"))){
-                return "computer";
+                return ["computer", computer, human];
             }
-    else return "draw";
+    else return ["draw", computer, human];
     
 }
 
@@ -82,14 +82,21 @@ function getComputerChoice(){
 }
 
 function game(result){
-    if (result === "human") humanResult++;
-    if (result === "computer") computerResult++;
+    console.log(result[0]);
+    console.log(result[1]);
+    console.log(result[2]);
+    if (result[0] === "human") humanResult++;
+    if (result[0] === "computer") computerResult++;
     currentRound++;
     
     if (currentRound == numberOfRounds){
         resultField.innerHTML += `<h2>Final round <br></h2>`;
-        resultField.innerHTML += `Human result is: ${humanResult}<br>`;
-        resultField.innerHTML += `Computer result is: ${computerResult}<br>`;
+        if ((result[0] === `human`) || (result[0] === `computer`)){
+            resultField.innerHTML += `${result[0]} won this round!<br>`;
+        }
+        else resultField.innerHTML += 'Result of this round is Draw!<br>';
+        resultField.innerHTML += `Human choose ${result[2]}, his result is: ${humanResult}<br>`;
+        resultField.innerHTML += `Computer choose is ${result[1]}, it's result is: ${computerResult}<br>`;
         if (humanResult > computerResult){
             resultField.innerHTML += `<h1>Human won!<br></h1>`;
         }
@@ -102,8 +109,12 @@ function game(result){
 
     else{
         resultField.innerHTML += `<h2>Round:  ${currentRound}<br></h2>`;
-        resultField.innerHTML += `Human result is: ${humanResult}<br>`;
-        resultField.innerHTML += `Computer result is: ${computerResult}<br>`;
+        if ((result[0] === `human`) || (result[0] === `computer`)){
+            resultField.innerHTML += `${result[0]} won this round!<br>`;
+        }
+        else resultField.innerHTML += 'Result of this round is Draw!<br>';
+        resultField.innerHTML += `Human choose ${result[2]}, his result is: ${humanResult}<br>`;
+        resultField.innerHTML += `Computer choose is ${result[1]}, it's result is: ${computerResult}<br>`;
     }
     resultField.scrollTop = resultField.scrollHeight;
 
